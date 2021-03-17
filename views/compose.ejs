@@ -2,8 +2,16 @@
 
   <h1>Compose</h1>
 
-  <input type="text" name="newPost" value="">
-  <button type="submit" name="submit">Publish</button>
+<form class="" action="/compose" method="post">
+  <div class="mb-3 form-group">
+    <label class = "form-label">Title</label>
+    <input class="form-control" type="text" name="newTitle" value="">
+    <label class = "form-label">Compose</label>
+    <textarea class="form-control" name="newPost" rows="3"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" name="submit">Publish</button>
+</form>
+
 
 
 <%- include partials/footer -%>
