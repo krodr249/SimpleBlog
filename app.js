@@ -30,6 +30,17 @@ app.get("/compose", function(req, res){
   res.render("compose", {});
 })
 
+app.get("/posts/:postName",function(req,res){
+  const reqestedParam = req.params.postName.split(" ").join("-").toLowerCase();
+
+  posts.forEach(function(post){
+    const storedTitle = post.title.split(" ").join("-").toLowerCase();
+    if(storedTitle === reqestedParam){
+      res.render("post", {postTitle:post.title, postContent:post.content});
+    }
+  });
+});
+
 app.post("/compose",function(req,res){
   var post ={
     title: req.body.newTitle,
@@ -37,7 +48,6 @@ app.post("/compose",function(req,res){
   };
   posts.push(post);
   res.redirect("/");
-
 })
 
 app.listen(3000, function() {
